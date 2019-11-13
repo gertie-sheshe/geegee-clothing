@@ -6,12 +6,36 @@ import ShopPage from './pages/shop/shop.component';
 import Header from './components/header/header.component';
 import Auth from './pages/auth/auth.component';
 
+import {auth} from './firebase/firebase.utils';
+
 import './App.css';
 
-function App() {
-  return (
+
+class App extends React.Component {
+  state = {
+    currentUser: null
+  }
+
+  unsubscribeFromAuth = null;
+
+  
+  componentDidMount() {
+    // user session persisted via firebase
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
+      this.setState({
+        currentUser: user
+      });
+    });
+  }
+
+  componentWillUnmount() {
+    this.unsubscribeFromAuth();
+  }
+
+  render () {
+    return (
     <div>
-      <Header />
+      <Header currentUser={this.state.currentUser}/>
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/shop" component={ShopPage} />
@@ -19,6 +43,7 @@ function App() {
       </Switch>
     </div>
   );
+  }
 }
 
 export default App;
