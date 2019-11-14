@@ -21,9 +21,10 @@ class App extends React.Component {
   
   componentDidMount() {
     // user session persisted via firebase
-    auth.onAuthStateChanged(async user => {
-      const savedUser = await createUserProfileDocument(user);
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
+      
     });
+
   }
 
   componentWillUnmount() {
