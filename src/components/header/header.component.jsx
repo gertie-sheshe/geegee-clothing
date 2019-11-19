@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import {auth} from '../../firebase/firebase.utils';
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 
+import CartIcon from '../cart-icon/cart-icon.component';
+
 import './header.styles.scss';
 
 const Header = ({currentUser}) => (
@@ -17,6 +19,7 @@ const Header = ({currentUser}) => (
             <Link className='option' to='/contact'>CONTACT</Link>
             {currentUser ? <div className='option' onClick={() => auth.signOut()} to='/contact'>SIGN OUT</div> : <Link to='/signin' className='option'>SIGN IN</Link>}
             <Link className='option' to=''></Link>
+            <CartIcon/>
         </div>
     </div>
 );
