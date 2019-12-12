@@ -9,11 +9,15 @@ import './collection.styles.scss';
 import {selectCollection} from '../../redux/shop/shop.selectors'
 
 const CollectionPage = ({ match, collection }) => {
-  console.log('COLLECTION', collection)
-  return (<div className="collection-page">
-    <h2>CATEGORY PAGE</h2>
-    
-  </div>)
+  const {title, items} = collection;
+  return (
+    <div className="collection-page">
+        <h2 className="title">{title}</h2>
+        <div className="items">
+            { items.map( item => <CollectionItem item={item} key={item.id}/>)}
+        </div>
+    </div>
+  )
 };
 
 const mapStateToProps = (state, ownProps) => ({
