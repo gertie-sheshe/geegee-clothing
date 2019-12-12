@@ -7,7 +7,6 @@ import { store, persistor } from './redux/store';
 
 import './index.css';
 import App from './App';
-import { persistReducer } from 'redux-persist';
 
 ReactDOM.render(
   <Provider store={store}>
