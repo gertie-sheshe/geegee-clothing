@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-component';
+import styled, { css } from 'styled-components';
 
 const buttonStyles = css`
   background-color: black;
@@ -33,7 +33,7 @@ const googleSignInStyles = css`
 `;
 
 const getButtonStyles = props => {
-  if (props.googleSignIn) {
+  if (props.isGoogleSignIn) {
     return googleSignInStyles;
   }
 
@@ -54,4 +54,5 @@ export const CustomButtonContainer = styled.button`
   cursor: pointer;
   display: flex;
   justify-content: center;
+  ${getButtonStyles}
 `;
