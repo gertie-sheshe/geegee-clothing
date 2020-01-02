@@ -17,12 +17,9 @@ import { selectCurrentUser } from './redux/user/user.selectors';
 
 import './App.css';
 
-
 class App extends React.Component {
-
   unsubscribeFromAuth = null;
 
-  
   componentDidMount() {
     const { setCurrentUser } = this.props;
     // user session persisted via firebase
@@ -32,22 +29,21 @@ class App extends React.Component {
 
         userRef.onSnapshot(snapshot => {
           setCurrentUser({
-              id: snapshot.id,
-            ...snapshot.data()
+            id: snapshot.id,
+            ...snapshot.data(),
           });
-        })
-      } 
-      
+        });
+      }
+
       setCurrentUser(userAuth);
     });
-
   }
 
   componentWillUnmount() {
     this.unsubscribeFromAuth();
   }
 
-  render () {
+  render() {
     return (
       <div>
         <Header />
@@ -74,12 +70,12 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = createStructuredSelector ({
-  currentUser: selectCurrentUser
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  setCurrentUser: user => dispatch(setCurrentUser(user))
+const mapDispatchToProps = dispatch => ({
+  setCurrentUser: user => dispatch(setCurrentUser(user)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
