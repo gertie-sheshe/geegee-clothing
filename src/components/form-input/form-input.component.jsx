@@ -1,7 +1,5 @@
 import React from 'react';
 
-import './form-input.styles.scss';
-
 import {
   GroupContainer,
   FormInputContainer,
