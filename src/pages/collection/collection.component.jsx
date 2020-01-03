@@ -14,6 +14,7 @@ import { selectCollection } from '../../redux/shop/shop.selectors';
 
 const CollectionPage = ({ match, collection }) => {
   const { title, items } = collection;
+
   return (
     <CollectionPageContainer>
       <CollectionTitleContainer>{title}</CollectionTitleContainer>
