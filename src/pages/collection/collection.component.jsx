@@ -12,7 +12,7 @@ import {
 // Selectors
 import { selectCollection } from '../../redux/shop/shop.selectors';
 
-const CollectionPage = ({ match, collection }) => {
+const CollectionPage = ({ collection }) => {
   const { title, items } = collection;
 
   return (
