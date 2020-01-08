@@ -9,7 +9,7 @@ export const fetchCollectionsStart = () => ({
 });
 
 export const fetchCollectionsSuccess = collectionsMap => ({
-  type: ShopActionTypes.fetchCollectionsSuccess,
+  type: ShopActionTypes.FETCH_COLLECTIONS_SUCCESS,
   payload: collectionsMap,
 });
 
