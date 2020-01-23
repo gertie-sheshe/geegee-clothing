@@ -57,8 +57,12 @@ class App extends React.Component {
           />
           <Route
             path="/shop"
-            render={() =>
-              this.props.currentUser ? <ShopPage /> : <Redirect to="/signin" />
+            render={props =>
+              this.props.currentUser ? (
+                <ShopPage {...props} />
+              ) : (
+                <Redirect to="/signin" />
+              )
             }
           />
           <Route
