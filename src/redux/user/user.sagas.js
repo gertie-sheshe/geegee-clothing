@@ -6,12 +6,7 @@ import {
   createUserProfileDocument,
 } from '../../firebase/firebase.utils';
 
-import {
-  googleSignInFailure,
-  googleSignInSuccess,
-  emailSignInSuccess,
-  emailSignInFailure,
-} from './user.actions';
+import { signInSuccess, signInFailure } from './user.actions';
 
 export function* signInWithGoogle() {
   try {
@@ -20,13 +15,13 @@ export function* signInWithGoogle() {
     const userSnapshot = yield userRef.get();
 
     yield put(
-      googleSignInSuccess({
+      signInSuccess({
         id: userSnapshot.id,
         ...userSnapshot.data(),
       }),
     );
   } catch (error) {
-    yield put(googleSignInFailure(error));
+    yield put(signInFailure(error));
   }
 }
 
@@ -37,13 +32,13 @@ export function* signInWithEmail({ payload: { email, password } }) {
     const userSnapshot = yield userRef.get();
 
     yield put(
-      emailSignInSuccess({
+      signInSuccess({
         id: userSnapshot.id,
         ...userSnapshot.data(),
       }),
     );
   } catch (error) {
-    yield put(emailSignInFailure(error));
+    yield put(signInFailure(error));
   }
 }
 
