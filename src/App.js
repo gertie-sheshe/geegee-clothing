@@ -9,7 +9,6 @@ import Header from './components/header/header.component';
 import Auth from './pages/auth/auth.component';
 import CheckOutPage from './pages/checkout/checkout.component';
 
-import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { checkUserSession } from './redux/user/user.actions';
 
 // Selectors
