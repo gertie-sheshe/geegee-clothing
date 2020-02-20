@@ -5,6 +5,7 @@ import { createStructuredSelector } from 'reselect';
 
 import Header from './components/header/header.component';
 import Spinner from './components/spinner/spinner.component';
+import ErrorBoundary from './components/error-boundary/error-boundary.component';
 
 import { checkUserSession } from './redux/user/user.actions';
 
@@ -37,47 +38,49 @@ class App extends React.Component {
         <GlobalStyle />
         <Header />
         <Switch>
-          <Suspense fallback={<Spinner />}>
-            <Route
-              exact
-              path="/"
-              render={() =>
-                this.props.currentUser ? (
-                  <HomePage />
-                ) : (
-                  <Redirect to="/signin" />
-                )
-              }
-            />
-            <Route
-              path="/shop"
-              render={props =>
-                this.props.currentUser ? (
-                  <ShopPage {...props} />
-                ) : (
-                  <Redirect to="/signin" />
-                )
-              }
-            />
-            <Route
-              exact
-              path="/checkout"
-              render={() =>
-                this.props.currentUser ? (
-                  <CheckOutPage />
-                ) : (
-                  <Redirect to="/signin" />
-                )
-              }
-            />
-            <Route
-              exact
-              path="/signin"
-              render={() =>
-                this.props.currentUser ? <Redirect to="/" /> : <Auth />
-              }
-            />
-          </Suspense>
+          <ErrorBoundary>
+            <Suspense fallback={<Spinner />}>
+              <Route
+                exact
+                path="/"
+                render={() =>
+                  this.props.currentUser ? (
+                    <HomePage />
+                  ) : (
+                    <Redirect to="/signin" />
+                  )
+                }
+              />
+              <Route
+                path="/shop"
+                render={props =>
+                  this.props.currentUser ? (
+                    <ShopPage {...props} />
+                  ) : (
+                    <Redirect to="/signin" />
+                  )
+                }
+              />
+              <Route
+                exact
+                path="/checkout"
+                render={() =>
+                  this.props.currentUser ? (
+                    <CheckOutPage />
+                  ) : (
+                    <Redirect to="/signin" />
+                  )
+                }
+              />
+              <Route
+                exact
+                path="/signin"
+                render={() =>
+                  this.props.currentUser ? <Redirect to="/" /> : <Auth />
+                }
+              />
+            </Suspense>
+          </ErrorBoundary>
         </Switch>
       </div>
     );
