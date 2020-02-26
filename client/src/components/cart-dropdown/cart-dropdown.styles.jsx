@@ -30,3 +30,6 @@ export const EmptyMessage = styled.span`
 export const CartDropdownButton = styled(CustomButton)`
   margin-top: auto;
 `;
+
+CartDropdownButton.displayName = 'CartDropdownButton';
+EmptyMessage.displayName = 'EmptyMessageContainer';
