@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckoutItem Component Should render CheckoutItem Component 1`] = `ShallowWrapper {}`;

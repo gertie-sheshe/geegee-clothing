@@ -15,7 +15,12 @@ import {
   RemoveButtonContainer,
 } from './checkout-item.styles';
 
-const CheckOutItem = ({ cartItem, removeItem, addItem, removeQuantity }) => {
+export const CheckOutItem = ({
+  cartItem,
+  removeItem,
+  addItem,
+  removeQuantity,
+}) => {
   const { name, imageUrl, price, quantity } = cartItem;
   return (
     <CheckoutItemContainer>
