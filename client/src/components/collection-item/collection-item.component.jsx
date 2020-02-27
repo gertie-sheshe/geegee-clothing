@@ -12,7 +12,7 @@ import {
   CollectionFooterContainer,
 } from './collection-item.styles';
 
-const CollectionItem = ({ item, addItem }) => {
+export const CollectionItem = ({ item, addItem }) => {
   const { imageUrl, name, price } = item;
   return (
     <CollectionItemContainer>
